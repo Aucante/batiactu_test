@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+    <h1 id="title" class="display-4 my-5 text-center">CONTACTEZ-NOUS</h1>
+    <div class="container my-5">
+        <!-- Toast -->
+        <div id="toast" class="d-none text-center my-5 shadow-lg rounded-3">
+            <div class="bg-white rounded-3 w-50 mx-auto">
+                <div class="toast-headers py-3">
+                    ERREUR LORS DE L'ENVOI
+                </div>
+                <div class="toast-body display-6 fs-6 container pb-3">
+                    <div id="error-lastname">{{ form_errors(form.lastname) }}</div>
+                    <div id="error-firstname">{{ form_errors(form.firstname) }}</div>
+                    <div id="error-phone">{{ form_errors(form.phone) }}</div>
+                    <div id="error-mail">{{ form_errors(form.mail) }}</div>
+                    <div id="error-message">{{ form_errors(form.message) }}</div>
+                    <div id="error-captcha">{{ form_errors(form.captcha) }}</div>
+                </div>
+                <div class="toast-footer pb-4">
+                    <button class="btn btn-primary text-white text-uppercase shadow-none rounded-pill" onclick="toggle()">FERMER</button>
+                </div>
+            </div>
+        </div>
+        <div id="form" class="row">
+            <div class="col-12">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(form.lastname) }}
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(form.firstname) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(form.phone) }}
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(form.mail) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(form.message) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(form.captcha) }}
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary shadow-none text-white rounded-pill">ENVOYER</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let toast = document.getElementById('toast');
+        let form = document.getElementById('form');
+        let title = document.getElementById('title');
+        let errorLastName = document.getElementById('error-lastname');
+        let errorFirstName = document.getElementById('error-firstname');
+        let errorPhone = document.getElementById('error-phone');
+        let errorMail = document.getElementById('error-mail');
+        let errorMessage = document.getElementById('error-message');
+        let errorCaptcha = document.getElementById('error-captcha');
+        if(errorLastName.innerHTML || errorFirstName.innerHTML || errorPhone.innerHTML || errorMail.innerHTML || errorMessage.innerHTML || errorCaptcha.innerHTML){
+            toast.classList.remove('d-none');
+            form.classList.add('d-none');
+            title.classList.add('d-none');
+        }
+
+        function toggle() {
+            toast.classList.add('d-none');
+            form.classList.remove('d-none');
+            title.classList.remove('d-none');
+        }
+
+    </script>
+
+{% endblock %}
