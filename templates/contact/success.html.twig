@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Récapitulatif contact{% endblock %}
+
+{% block body %}
+    <div class="container text-center my-5">
+        <h1 class="display-5">RECAPITULATIF DE VOTRE MESSAGE</h1>
+    </div>
+    <div class="container my-5">
+        <div class="row text-start">
+            <div class="col-12 display-6 fs-5">
+                <div class="row">
+                    <div class="col-6"><p>NOM :</p></div>
+                    <div class="col-6"><p>{{ contact.lastname }}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><p>PRENOM :</p></div>
+                    <div class="col-6"><p>{{ contact.firstname }}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><p>TELEPHONE :</p></div>
+                    <div class="col-6"><p>{{ contact.phone }}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><p>EMAIL :</p></div>
+                    <div class="col-6"><p>{{ contact.mail }}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><p>MESSAGE :</p></div>
+                    <div class="col-12"><p>{{ contact.message|nl2br }}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
