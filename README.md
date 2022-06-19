@@ -42,6 +42,24 @@ Stop server - Fermer le serveur
   symfony server:stop
 ```
 
+## Manage database - Gestion de la BDD
+
+Create BDD - Créer BDD
+
+```bash
+  php bin/console doctrine:database:create
+```
+
+Migrate BDD - Migrer BDD
+
+```bash
+  php bin/console make:migration
+```
+
+```bash
+  php bin/console doctrine:migrations:migrate
+```
+
 ## Tests
 
 Run unit and functionnal tests - Lancer tests unitaires et fonctionnels
