@@ -3,7 +3,7 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-    <h1 id="title" class="display-4 my-5 text-center">CONTACTEZ-NOUS</h1>
+    <h1 id="title" class="display-4 my-5 text-center text-uppercase">CONTACTEZ-NOUS</h1>
     <div class="container my-5">
         <!-- Toast -->
         <div id="toast" class="d-none text-center my-5 shadow-lg rounded-3">
@@ -28,18 +28,18 @@
             <div class="col-12">
                 {{ form_start(form) }}
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         {{ form_row(form.lastname) }}
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         {{ form_row(form.firstname) }}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         {{ form_row(form.phone) }}
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         {{ form_row(form.mail) }}
                     </div>
                 </div>
