@@ -15,6 +15,7 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @var int
      */
     private $id;
 
@@ -22,6 +23,7 @@ class Contact
      * @Assert\NotBlank(message="Veuillez renseigner le nom")
      * @Assert\Length(min=2, max=25, minMessage="Le nom doit avoir au moins {{ limit }} caractères", maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $lastname;
 
@@ -29,6 +31,7 @@ class Contact
      * @Assert\NotBlank(message="Veuillez renseigner le prénom")
      * @Assert\Length(min=2, max=25, minMessage="Le prénom doit avoir au moins {{ limit }} caractères", maxMessage="Le prénom ne doit pas dépasser {{ limit }} caractères")
      * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $firstname;
 
@@ -36,6 +39,7 @@ class Contact
      * @Assert\NotBlank(message="Veuillez renseigner le numéro de téléphone")
      * @Assert\Length(min=8, max=12, minMessage="Le numéro de téléphone doit avoir au moins {{ limit }} chiffres", maxMessage="Le numéro de téléphone ne doit pas dépasser {{ limit }} chiffres")
      * @ORM\Column(type="string", length=14)
+     * @var string
      */
     private $phone;
 
@@ -43,6 +47,7 @@ class Contact
      * @Assert\NotBlank(message="Veuillez renseigner l'email")
      * @Assert\Email()
      * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $mail;
 
@@ -50,6 +55,7 @@ class Contact
      * @Assert\NotBlank(message="Veuillez rédiger votre message")
      * @Assert\Length(min=8, max=1200, minMessage="Le message doit avoir au moins {{ limit }} caractères", maxMessage="Le message ne doit pas dépasser {{ limit }} caractères")
      * @ORM\Column(type="text")
+     * @var string
      */
     private $message;
 
