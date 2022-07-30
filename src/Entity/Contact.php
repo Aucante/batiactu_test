@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -16,6 +17,7 @@ class Contact
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @var int
+     * @Groups("contact:read")
      */
     private $id;
 
@@ -24,6 +26,7 @@ class Contact
      * @Assert\Length(min=2, max=25, minMessage="Le nom doit avoir au moins {{ limit }} caractères", maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      * @ORM\Column(type="string", length=255)
      * @var string
+     * @Groups("contact:read")
      */
     private $lastname;
 
@@ -32,6 +35,7 @@ class Contact
      * @Assert\Length(min=2, max=25, minMessage="Le prénom doit avoir au moins {{ limit }} caractères", maxMessage="Le prénom ne doit pas dépasser {{ limit }} caractères")
      * @ORM\Column(type="string", length=255)
      * @var string
+     * @Groups("contact:read")
      */
     private $firstname;
 
@@ -40,6 +44,7 @@ class Contact
      * @Assert\Length(min=8, max=12, minMessage="Le numéro de téléphone doit avoir au moins {{ limit }} chiffres", maxMessage="Le numéro de téléphone ne doit pas dépasser {{ limit }} chiffres")
      * @ORM\Column(type="string", length=14)
      * @var string
+     * @Groups("contact:read")
      */
     private $phone;
 
@@ -48,6 +53,7 @@ class Contact
      * @Assert\Email()
      * @ORM\Column(type="string", length=255)
      * @var string
+     * @Groups("contact:read")
      */
     private $mail;
 
@@ -56,6 +62,7 @@ class Contact
      * @Assert\Length(min=8, max=1200, minMessage="Le message doit avoir au moins {{ limit }} caractères", maxMessage="Le message ne doit pas dépasser {{ limit }} caractères")
      * @ORM\Column(type="text")
      * @var string
+     * @Groups("contact:read")
      */
     private $message;
 

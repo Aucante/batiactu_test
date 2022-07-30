@@ -21,6 +21,15 @@
                 <img src="{{ asset('build/img/logo-batiactu.png') }}" alt="" height="50px">
             </a>
         </span>
+            {% if app.user %}
+            <a href="{{ path('app_logout') }}" class="btn btn-primary rounded-0 text-white text-right">
+                Deconnexion
+            </a>
+            {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-primary rounded-0 text-white text-right">
+                Connexion
+            </a>
+            {% endif %}
         </div>
     </nav>
         {% block body %}{% endblock %}
