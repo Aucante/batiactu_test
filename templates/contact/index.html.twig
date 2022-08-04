@@ -17,7 +17,6 @@
                     <div id="error-phone">{{ form_errors(form.phone) }}</div>
                     <div id="error-mail">{{ form_errors(form.mail) }}</div>
                     <div id="error-message">{{ form_errors(form.message) }}</div>
-                    <div id="error-captcha">{{ form_errors(form.captcha) }}</div>
                 </div>
                 <div class="toast-footer pb-4">
                     <button class="btn btn-primary text-white text-uppercase shadow-none rounded-pill" onclick="toggle()">FERMER</button>
@@ -46,11 +45,6 @@
                 <div class="row">
                     <div class="col-12">
                         {{ form_row(form.message) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        {{ form_row(form.captcha) }}
                     </div>
                 </div>
                 <div class="text-center">
