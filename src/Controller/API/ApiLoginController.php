@@ -21,10 +21,6 @@ class ApiLoginController extends AbstractController
         UserRepository $userRepository
     ): Response
     {
-        $username = $request->query->get('username');
-
-        $user = $userRepository->findOneBy(['username']);
-
-        dd($user);
+        return $this->json(['success' => 'Vous etes authentifié']);
     }
 }
