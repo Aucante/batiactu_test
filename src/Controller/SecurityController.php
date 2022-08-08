@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -32,5 +34,21 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    /**
+     * @Route("/api/login_check", name="api_login")
+     */
+    public function api_login(
+        Request $request
+    ): JsonResponse
+    {
+        $username = $request->query->get('username');
+        $password = $request->query->get('username');
+
+        return $this->json([
+            'username' => $username,
+            'password' => $password,
+        ]);
     }
 }
