@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class ApiLoginController extends AbstractController
 {
     /**
-     * @Route("/api/login", name="api_login")
+     * @Route("/api/connexion", name="api_connexion")
      */
     public function login(
         Request $request,
