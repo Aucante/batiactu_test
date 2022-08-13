@@ -35,10 +35,6 @@ class ContactType extends AbstractType
                 'label' => 'Message',
                 'required' => false
             ])
-            ->add('captcha', CaptchaType::class, [
-                'label' => false,
-                'invalid_message' => 'La valeur entrée ne correspond pas au captcha'
-            ]);
         ;
     }
 
