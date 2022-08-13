@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api/contact", name="api_contact_")
@@ -46,10 +47,15 @@ class ApiContactController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         SerializerInterface $serializer,
-        UrlGeneratorInterface $generator
+        UrlGeneratorInterface $generator,
+        ValidatorInterface $validator
     ): JsonResponse {
 
         $contact = $serializer->deserialize($request->getContent(), Contact::class, 'json');
+        $errors = $validator->validate($contact);
+        if ($errors->count() > 0) {
+            return new JsonResponse($serializer->serialize($errors, 'json'), JsonResponse::HTTP_BAD_REQUEST, [], true);
+        }
         $entityManager->persist($contact);
         $entityManager->flush();
 
@@ -68,7 +74,8 @@ class ApiContactController extends AbstractController
         Request $request,
         Contact $contact,
         EntityManagerInterface $entityManager,
-        SerializerInterface $serializer
+        SerializerInterface $serializer,
+        ValidatorInterface $validator
     ): JsonResponse {
 
         $serializer->deserialize(
@@ -77,6 +84,11 @@ class ApiContactController extends AbstractController
             'json',
             [AbstractNormalizer::OBJECT_TO_POPULATE => $contact]
         );
+        $errors = $validator->validate($contact);
+
+        if ($errors->count() > 0) {
+            return new JsonResponse($serializer->serialize($errors, 'json'), JsonResponse::HTTP_BAD_REQUEST, [], true);
+        }
         $entityManager->flush();
 
         return new JsonResponse(null, JsonResponse::HTTP_NO_CONTENT);
